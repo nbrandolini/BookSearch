@@ -1,0 +1,15 @@
+{
+  "expo": {
+   "name": "Book Journal",
+   "icon": "./app-icon.png",
+   "version": "1.0.0",
+   "slug": "book-search",
+   "sdkVersion": "27.0.0",
+   "ios": {
+     "bundleIdentifier": "com.nicoleta.booksearch"
+   },
+   "android": {
+     "package": "com.nicoleta.booksearch"
+   }
+  }
+}
