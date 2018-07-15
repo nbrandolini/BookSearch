@@ -6,7 +6,7 @@ import {
   TabBarIOS,
 } from 'react-native';
 
-export default class BookSearch extends React.Component {
+export default class BookSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {

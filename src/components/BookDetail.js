@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 
-export default class BookDetail extends React.Component {
+export default class BookDetail extends Component {
+
   render() {
     let book = this.props.book;
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
