@@ -76,21 +76,21 @@ export default class SearchResults extends Component {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
 
     return (
-          <TouchableHighlight onPress={() => this.showBookDetail(book)}
-                              underlayColor='#dddddd'>
-              <View>
-                  <View style={styles.cellContainer}>
-                      <Image
-                          source={{ uri: imageURI }}
-                          style={styles.thumbnail} />
-                      <View style={styles.rightContainer}>
-                          <Text style={styles.title}>{book.volumeInfo.title}</Text>
-                          <Text style={styles.author}>{book.volumeInfo.authors}</Text>
-                      </View>
-                  </View>
-                  <View style={styles.separator} />
+      <TouchableHighlight onPress={() => this.showBookDetail(book)}
+         underlayColor='#dddddd'>
+          <View>
+            <View style={styles.cellContainer}>
+                <Image
+                    source={{ uri: imageURI }}
+                    style={styles.thumbnail} />
+                <View style={styles.rightContainer}>
+                    <Text style={styles.title}>{book.volumeInfo.title}</Text>
+                    <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+                </View>
               </View>
-          </TouchableHighlight>
+              <View style={styles.separator} />
+          </View>
+      </TouchableHighlight>
       );
   }
 

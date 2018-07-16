@@ -10,13 +10,15 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   searchInput: {
-    height: 36,
+    height: 40,
     marginTop: 10,
     marginBottom: 10,
     fontSize: 18,
-    flex: 1,
+    color: 'black',
     borderRadius: 4,
     padding: 5,
+    borderColor: 'blue',
+    borderWidth: StyleSheet.hairlineWidth,
   },
   button: {
     height: 36,
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     marginTop: 15,
+    width: 150,
   },
   buttonText: {
     fontSize: 18,
@@ -38,6 +41,7 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 15,
     marginTop: 15,
+    color: 'black',
   },
   errorMessage: {
     fontSize: 15,
@@ -106,7 +110,7 @@ export default class SearchBooks extends Component {
         }))
         .done();
   }
-  
+
   render() {
     let spinner = this.state.isLoading ?
         (<ActivityIndicator
@@ -118,11 +122,21 @@ export default class SearchBooks extends Component {
           <Text style={styles.instructions}> Search by book title and/or author</Text>
             <View>
               <Text style={styles.fieldLabel}>Book Title:</Text>
-              <TextInput style={styles.searchInput} onChange={this.bookTitleInput.bind(this)}/>
+              <TextInput
+              style={styles.searchInput} placeholder='Title'
+              onChangeText={(text) => this.setState({ bookTitle: text })}
+              value={this.state.bookTitle}>
+              </TextInput>
+
             </View>
+
             <View>
               <Text style={styles.fieldLabel}>Author:</Text>
-              <TextInput style={styles.searchInput} onChange={this.bookAuthorInput.bind(this)}/>
+              <TextInput
+              style={styles.searchInput} placeholder='Author'
+              onChangeText={(text) => this.setState({ bookAuthor: text })}>
+              </TextInput>
+
             </View>
             <TouchableHighlight style={styles.button}
               underlayColor='#CC0066'

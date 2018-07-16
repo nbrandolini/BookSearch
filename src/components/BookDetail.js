@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 export default class BookDetail extends Component {
 
@@ -8,10 +8,10 @@ export default class BookDetail extends Component {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
     let description = (typeof book.volumeInfo.description !== 'undefined') ? book.volumeInfo.description : '';
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Image style={styles.image} source={{ uri: imageURI }} />
         <Text style={styles.description}>{ description }</Text>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -19,7 +19,7 @@ export default class BookDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 75,
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   image: {
     width: 107,
