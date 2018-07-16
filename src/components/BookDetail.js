@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     color: '#656565',
+    fontFamily: 'Avenir Next',
   },
 });

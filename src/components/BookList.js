@@ -86,7 +86,6 @@ export default class BookList extends Component {
   }
 
   showBookDetail(book) {
-
     this.props.navigator.push({
       title: book.volumeInfo.title,
       component: BookDetail,
@@ -111,13 +110,16 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     flex: 1,
+
   },
   title: {
     fontSize: 20,
     marginBottom: 8,
+    fontFamily: 'Avenir Next',
   },
   author: {
     color: '#656565',
+    fontFamily: 'Avenir Next',
   },
   separator: {
     height: 1,

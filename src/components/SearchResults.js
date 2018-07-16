@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import  {
-  StyleSheet,
-  View,
-  Text,
-  TouchableHighlight,
-  Image,
-  ListView
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight,
+  Image, ListView, BackHandler
+  } from 'react-native';
 import BookDetail from './BookDetail';
 
 const styles = StyleSheet.create({
@@ -60,13 +55,20 @@ export default class SearchResults extends Component {
   }
 
   render() {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+          if (this.props.navigator && this.props.navigator.getCurrentRoutes().length > 1) {
+            this.props.navigator.pop();
+            return true;
+          }
 
+          return false;
+        });
     return (
         <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderBook.bind(this)}
-        style={styles.listView}
-        />
+          dataSource={this.state.dataSource}
+          renderRow={this.renderBook.bind(this)}
+          style={styles.listView}
+          />
       );
   }
 
@@ -74,29 +76,30 @@ export default class SearchResults extends Component {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
 
     return (
-      <TouchableHighlight onPress={() => this.showBookDetail(book)}    underlayColor='#dddddd'>
-        <View>
-          <View style={styles.cellContainer}>
-            <Image
-                source ={{ uri: imageURI }}
-                style={styles.thumbnail} />
-            <View style={styles.rightContainer}>
-              <Text style={styles.title}>{book.volumeInfo.title}</Text>
-              <Text style={styles.author}>{book.volumeInfo.authors}</Text>
-            </View>
-          </View>
-          <View style={styles.separator} />
-        </View>
-      </TouchableHighlight>
+          <TouchableHighlight onPress={() => this.showBookDetail(book)}
+                              underlayColor='#dddddd'>
+              <View>
+                  <View style={styles.cellContainer}>
+                      <Image
+                          source={{ uri: imageURI }}
+                          style={styles.thumbnail} />
+                      <View style={styles.rightContainer}>
+                          <Text style={styles.title}>{book.volumeInfo.title}</Text>
+                          <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+                      </View>
+                  </View>
+                  <View style={styles.separator} />
+              </View>
+          </TouchableHighlight>
       );
   }
 
   showBookDetail(book) {
-
     this.props.navigator.push({
-        title: book.volumeInfo.title,
-        component: BookDetail,
-        passProps: { book },
-      });
+      title: book.volumeInfo.title,
+      component: BookDetail,
+      passProps: { book },
+    });
   }
+
 }
