@@ -124,8 +124,7 @@ export default class SearchBooks extends Component {
               <Text style={styles.fieldLabel}>Book Title:</Text>
               <TextInput
               style={styles.searchInput} placeholder='Title'
-              onChangeText={(text) => this.setState({ bookTitle: text })}
-              value={this.state.bookTitle}>
+              onChangeText={(text) => this.setState({ bookTitle: text })}>
               </TextInput>
 
             </View>

@@ -19,12 +19,12 @@ export default class BookDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 75,
-    // alignItems: 'center',
   },
   image: {
     width: 107,
     height: 165,
     padding: 10,
+    marginLeft: 10,
   },
   description: {
     padding: 10,
