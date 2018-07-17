@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableHighlight,
-  Image, ListView, BackHandler
+  Image, ListView, BackHandler, Alert
   } from 'react-native';
 import BookDetail from './BookDetail';
+import {
+  MenuProvider,
+  Menu,
+  MenuTrigger,
+  MenuOptions,
+  MenuOption,
+} from 'react-native-popup-menu';
 
 const styles = StyleSheet.create({
   container: {
@@ -76,6 +83,7 @@ export default class SearchResults extends Component {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
 
     return (
+    <MenuProvider>
       <TouchableHighlight onPress={() => this.showBookDetail(book)}
          underlayColor='#dddddd'>
           <View>
@@ -89,8 +97,17 @@ export default class SearchResults extends Component {
                 </View>
               </View>
               <View style={styles.separator} />
+              <Menu onSelect={value => Alert.alert(value)}>
+              <MenuTrigger text={'Select an option'} />
+              <MenuOptions style={{ height: 150 }}>
+                <MenuOption value="Read" text="Read" />
+                <MenuOption value="Reading" text="Reading" />
+                <MenuOption value="To Read" text="To Read" />
+            </MenuOptions>
+          </Menu>
           </View>
       </TouchableHighlight>
+    </MenuProvider>
       );
   }
 
