@@ -100,7 +100,7 @@ export default class SearchBooks extends Component {
             passProps: { books: responseData.items },
           });
         } else {
-          this.setState({ errorMessage: 'No results found' });
+          this.setState({ errorMessage: 'Please enter a book or title' });
         }
       })
       .catch(error =>
@@ -123,7 +123,7 @@ export default class SearchBooks extends Component {
             <View>
               <Text style={styles.fieldLabel}>Book Title:</Text>
               <TextInput
-              style={styles.searchInput} placeholder='Title'
+              style={styles.searchInput} placeholder='Search by title'
               onChangeText={(text) => this.setState({ bookTitle: text })}>
               </TextInput>
 
@@ -132,7 +132,7 @@ export default class SearchBooks extends Component {
             <View>
               <Text style={styles.fieldLabel}>Author:</Text>
               <TextInput
-              style={styles.searchInput} placeholder='Author'
+              style={styles.searchInput} placeholder='Search by author'
               onChangeText={(text) => this.setState({ bookAuthor: text })}>
               </TextInput>
 
