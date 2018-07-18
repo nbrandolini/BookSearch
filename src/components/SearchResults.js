@@ -104,9 +104,9 @@ export default class SearchResults extends Component {
                   <Menu onSelect={value => Alert.alert(value)}>
                    <MenuTrigger text={'Actions'} />
                    <MenuOptions style={{ height: 125 }}>
-                     <MenuOption value="Read" text="Read" />
-                     <MenuOption value="Reading" text="Reading" />
-                     <MenuOption value="To Read" text="To Read" />
+                     <MenuOption onSelect={() => console.log(`Read`)} text='Read' />
+                     <MenuOption onSelect={() => console.log(`Reading`)} text='Reading' />
+                     <MenuOption onSelect={() => console.log(`To Read`)} text='To Read' /> 
                    </MenuOptions>
                   </Menu>
                   </Text>
