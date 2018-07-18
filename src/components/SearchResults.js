@@ -99,18 +99,22 @@ export default class SearchResults extends Component {
                     <Text style={styles.author}>{book.volumeInfo.authors}</Text>
                 </View>
                 <View style={styles.actionContainer}>
-                  <Text>actions</Text>
+                  <Text>
+
+                  <Menu onSelect={value => Alert.alert(value)}>
+                  <MenuTrigger text={'Actions'} />
+                  <MenuOptions style={{ height: 125 }}>
+                    <MenuOption value="Read" text="Read" />
+                    <MenuOption value="Reading" text="Reading" />
+                    <MenuOption value="To Read" text="To Read" />
+                </MenuOptions>
+              </Menu>
+
+                  </Text>
                 </View>
               </View>
               <View style={styles.separator} />
-              <Menu onSelect={value => Alert.alert(value)}>
-              <MenuTrigger text={'Select your bookshelf'} />
-              <MenuOptions style={{ height: 125 }}>
-                <MenuOption value="Read" text="Read" />
-                <MenuOption value="Reading" text="Reading" />
-                <MenuOption value="To Read" text="To Read" />
-            </MenuOptions>
-          </Menu>
+
           </View>
       </TouchableHighlight>
     </MenuProvider>
