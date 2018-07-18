@@ -44,8 +44,11 @@ const styles = StyleSheet.create({
     height: 81,
     marginRight: 10,
   },
-  rightContainer: {
+  detailContainer: {
     flex: 1,
+  },
+  actionContainer: {
+
   },
 });
 
@@ -91,9 +94,12 @@ export default class SearchResults extends Component {
                 <Image
                     source={{ uri: imageURI }}
                     style={styles.thumbnail} />
-                <View style={styles.rightContainer}>
+                <View style={styles.detailContainer}>
                     <Text style={styles.title}>{book.volumeInfo.title}</Text>
                     <Text style={styles.author}>{book.volumeInfo.authors}</Text>
+                </View>
+                <View style={styles.actionContainer}>
+                  <Text>actions</Text>
                 </View>
               </View>
               <View style={styles.separator} />
