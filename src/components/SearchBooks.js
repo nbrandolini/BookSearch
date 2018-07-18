@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 150,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'white',
     alignSelf: 'center',
   },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   fieldLabel: {
-    fontSize: 15,
+    fontSize: 18,
     marginTop: 15,
     color: 'black',
   },

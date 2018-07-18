@@ -98,8 +98,8 @@ export default class SearchResults extends Component {
               </View>
               <View style={styles.separator} />
               <Menu onSelect={value => Alert.alert(value)}>
-              <MenuTrigger text={'Select an option'} />
-              <MenuOptions style={{ height: 150 }}>
+              <MenuTrigger text={'Select your bookshelf'} />
+              <MenuOptions style={{ height: 125 }}>
                 <MenuOption value="Read" text="Read" />
                 <MenuOption value="Reading" text="Reading" />
                 <MenuOption value="To Read" text="To Read" />

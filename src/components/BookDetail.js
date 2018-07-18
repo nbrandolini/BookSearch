@@ -18,7 +18,7 @@ export default class BookDetail extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 75,
+    marginTop: 15,
   },
   image: {
     width: 107,

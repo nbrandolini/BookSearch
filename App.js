@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Search from './src/components/Search';
 import Featured from './src/components/Featured';
+import More from './src/components/More';
+
+
 
 import {
   TabBarIOS,
@@ -38,6 +41,17 @@ export default class BookSearch extends Component {
                     }}>
 
                     <Search/>
+          </TabBarIOS.Item>
+          <TabBarIOS.Item
+            selected={this.state.selectedTab === 'more'}
+            systemIcon='more'
+            onPress={() => {
+                      this.setState({
+                        selectedTab: 'more',
+                      });
+                    }}>
+
+                    <More/>
           </TabBarIOS.Item>
         </TabBarIOS>
         );
