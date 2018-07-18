@@ -5,13 +5,13 @@ import  {
   } from 'react-native';
 import BookStores from './BookStores';
 
-export default class More extends Component {
+export default class MyBooks extends Component {
   render() {
     return (
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-            title: 'BookStores',
+            title: 'My Bookcase',
             component: BookStores,
           }}/>
     );

@@ -5,7 +5,7 @@ export default class BookStores extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Maybe Bookstores???</Text>
+        <Text>My Lists of Books???</Text>
       </View>
     );
   }

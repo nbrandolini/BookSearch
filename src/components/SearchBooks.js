@@ -63,14 +63,6 @@ export default class SearchBooks extends Component {
       };
   }
 
-  bookTitleInput(event) {
-    this.setState({ bookTitle: event.nativeEvent.text });
-  }
-
-  bookAuthorInput(event) {
-    this.setState({ bookAuthor: event.nativeEvent.text });
-  }
-
   searchBooks() {
     this.fetchData();
   }
@@ -82,7 +74,6 @@ export default class SearchBooks extends Component {
       baseURL += encodeURIComponent('inauthor:' + this.state.bookAuthor);
       }
     if (this.state.bookTitle !== '') {
-      //if author was already added add it here.
       baseURL += (this.state.bookAuthor === '') ? encodeURIComponent('intitle:' + this.state.bookTitle) : encodeURIComponent('+intitle:' + this.state.bookTitle);
     }
 
@@ -90,7 +81,8 @@ export default class SearchBooks extends Component {
     fetch(baseURL)
       .then((response) => response.json())
       .then((responseData) => {
-        this.setState({ isLoading: false });
+        this.setState({ isLoading: false, bookTitle: '', bookAuthor: '' });
+
         if (responseData.items) {
 
           this.props.navigator.push({
@@ -123,20 +115,21 @@ export default class SearchBooks extends Component {
             <View>
               <Text style={styles.fieldLabel}>Book Title:</Text>
               <TextInput
+              value={this.state.bookTitle}
               style={styles.searchInput} placeholder='Search by title'
               onChangeText={(text) => this.setState({ bookTitle: text })}>
               </TextInput>
-
             </View>
 
             <View>
               <Text style={styles.fieldLabel}>Author:</Text>
               <TextInput
+              value={this.state.bookAuthor}
               style={styles.searchInput} placeholder='Search by author'
               onChangeText={(text) => this.setState({ bookAuthor: text })}>
               </TextInput>
-
             </View>
+
             <TouchableHighlight style={styles.button}
               underlayColor='#CC0066'
                onPress={this.searchBooks.bind(this)}>

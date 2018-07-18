@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableHighlight,
   Image, ListView, BackHandler, Alert
   } from 'react-native';
 import BookDetail from './BookDetail';
+import MyBooks from './MyBooks';
 import {
   MenuProvider,
   Menu,
@@ -100,16 +101,14 @@ export default class SearchResults extends Component {
                 </View>
                 <View style={styles.actionContainer}>
                   <Text>
-
                   <Menu onSelect={value => Alert.alert(value)}>
-                  <MenuTrigger text={'Actions'} />
-                  <MenuOptions style={{ height: 125 }}>
-                    <MenuOption value="Read" text="Read" />
-                    <MenuOption value="Reading" text="Reading" />
-                    <MenuOption value="To Read" text="To Read" />
-                </MenuOptions>
-              </Menu>
-
+                   <MenuTrigger text={'Actions'} />
+                   <MenuOptions style={{ height: 125 }}>
+                     <MenuOption value="Read" text="Read" />
+                     <MenuOption value="Reading" text="Reading" />
+                     <MenuOption value="To Read" text="To Read" />
+                   </MenuOptions>
+                  </Menu>
                   </Text>
                 </View>
               </View>
