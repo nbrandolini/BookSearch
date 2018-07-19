@@ -5,7 +5,7 @@ import  {
   } from 'react-native';
 import BookStores from './BookStores';
 
-export default class MyBooks extends Component {
+export default class MyBookcase extends Component {
   render() {
     return (
       <NavigatorIOS

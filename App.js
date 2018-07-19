@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './src/components/Search';
 import Featured from './src/components/Featured';
-import MyBooks from './src/components/MyBooks';
+import MyBookcase from './src/components/MyBookcase';
 
 
 import {
@@ -42,15 +42,15 @@ export default class BookSearch extends Component {
                     <Search/>
           </TabBarIOS.Item>
           <TabBarIOS.Item
-            selected={this.state.selectedTab === 'mybooks'}
+            selected={this.state.selectedTab === 'mybookcase'}
             systemIcon='more'
             onPress={() => {
                       this.setState({
-                        selectedTab: 'mybooks',
+                        selectedTab: 'mybookcase',
                       });
                     }}>
 
-                    <MyBooks/>
+                    <MyBookcase/>
           </TabBarIOS.Item>
         </TabBarIOS>
         );

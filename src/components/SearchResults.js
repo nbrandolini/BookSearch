@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, TouchableHighlight,
   Image, ListView, BackHandler, Alert
   } from 'react-native';
 import BookDetail from './BookDetail';
-import MyBooks from './MyBooks';
+import MyBookcase from './MyBookcase';
+import axios from 'axios';
 import {
   MenuProvider,
   Menu,
@@ -83,6 +84,32 @@ export default class SearchResults extends Component {
       );
   }
 
+  addBook = (book, status) => {
+    const books = this.state.books;
+    book.status = status;
+    book.title = book.volumeInfo.title;
+    book.author = book.volumeInfo.authors.toString();
+
+    axios.post('http://localhost:3001/api/v1/books/', book)
+      .then((responseData) => {
+        responseData.push(book);
+        this.setState({
+          responseData,
+          
+          // message: `Successfully Added ${book.title}`,
+          // title: 'My Bookcase',
+          // component: MyBookcase,
+          passProps: { books: responseData.items },
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          message: error.message,
+        });
+      });
+  };
+
+
   renderBook(book) {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
 
@@ -104,9 +131,9 @@ export default class SearchResults extends Component {
                   <Menu onSelect={value => Alert.alert(value)}>
                    <MenuTrigger text={'Actions'} />
                    <MenuOptions style={{ height: 125 }}>
-                     <MenuOption onSelect={() => console.log(`Read`)} text='Read' />
-                     <MenuOption onSelect={() => console.log(`Reading`)} text='Reading' />
-                     <MenuOption onSelect={() => console.log(`To Read`)} text='To Read' /> 
+                     <MenuOption onSelect={() => this.addBook(book, 'read')} text='Read' />
+                     <MenuOption onSelect={() => this.addBook(book, 'reading')} text='Reading' />
+                     <MenuOption onSelect={() => this.addBook(book, 'to read')} text='To Read' />
                    </MenuOptions>
                   </Menu>
                   </Text>
