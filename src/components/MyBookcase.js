@@ -2,18 +2,34 @@ import React, { Component } from 'react';
 import  {
     StyleSheet,
     NavigatorIOS,
+    View, Text
   } from 'react-native';
-import SearchResults from './SearchResults';
+import axios from 'axios';
 
 export default class MyBookcase extends Component {
+
+  state = {
+    books: [],
+  };
+
+  componentDidMount = () => {
+    axios.get(`http://localhost:3001/api/v1/books/`)
+    .then((response) => {
+      console.log(response.data);
+      this.setState({
+        books: response.data,
+      });
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+    });
+  };
+
   render() {
     return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-            title: 'My Bookcase',
-            component: SearchResults,
-          }}/>
+      <View style={styles.container}>
+        <Text>{this.state.books.length}</Text>
+      </View>
     );
   }
 }
@@ -21,5 +37,6 @@ export default class MyBookcase extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 150,
   },
 });
