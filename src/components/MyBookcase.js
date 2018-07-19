@@ -3,7 +3,7 @@ import  {
     StyleSheet,
     NavigatorIOS,
   } from 'react-native';
-import BookStores from './BookStores';
+import SearchResults from './SearchResults';
 
 export default class MyBookcase extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class MyBookcase extends Component {
         style={styles.container}
         initialRoute={{
             title: 'My Bookcase',
-            component: BookStores,
+            component: SearchResults,
           }}/>
     );
   }

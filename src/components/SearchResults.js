@@ -92,13 +92,12 @@ export default class SearchResults extends Component {
 
     axios.post('http://localhost:3001/api/v1/books/', book)
       .then((responseData) => {
+        Alert.alert(`Successfully Added ${book.volumeInfo.title}`);
         responseData.push(book);
         this.setState({
           responseData,
-          
-          // message: `Successfully Added ${book.title}`,
-          // title: 'My Bookcase',
-          // component: MyBookcase,
+          title: 'My Bookcase',
+          component: MyBookcase,
           passProps: { books: responseData.items },
         });
       })
