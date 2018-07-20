@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import  {
-    StyleSheet,
-    NavigatorIOS,
-    View, Text
-  } from 'react-native';
+import  { Text, View,  StyleSheet, Button } from 'react-native';
 import axios from 'axios';
+import _ from 'lodash';
 
 export default class MyBookcase extends Component {
 
   state = {
     books: [],
+    // status: null
   };
 
   componentDidMount = () => {
@@ -25,10 +23,55 @@ export default class MyBookcase extends Component {
     });
   };
 
+  filterBooks = (status) => {
+    return _.filter(this.state.books, { status });
+  };
+
+  onPressRead() {
+    // setState(status: read)
+    this.books.read();
+  }
+
+  onPressReading() {
+    // setState(status: reading)
+
+    this.books.reading();
+  }
+
+  onPressToRead() {
+    // setState(status: toRead)
+
+    this.books.toRead();
+  }
+
   render() {
+    // if status != null
+    // then loop through books
+    // by calling this.filterBooks(this.state.status)
+    // and then map that list of books to components
+    // otherwise...
+    // display the three buttons
     return (
       <View style={styles.container}>
-        <Text>{this.state.books.length}</Text>
+        <Button
+          onPress={this.onPressRead}
+          title="Read"
+          color="#841584"
+          accessibilityLabel="Read Books"
+        />
+        <Button
+          onPress={this.onPressReading}
+          title="Reading"
+          color="#841584"
+          accessibilityLabel="Reading Now"
+        />
+        <Button
+          onPress={this.onPressToRead}
+          title="To Read"
+          color="#841584"
+          accessibilityLabel="Books to Read"
+        />
+
       </View>
     );
   }

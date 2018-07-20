@@ -85,10 +85,11 @@ export default class SearchResults extends Component {
   }
 
   addBook = (book, status) => {
-    const books = this.state.books;
+    // const books = this.state.books;
     book.status = status;
     book.title = book.volumeInfo.title;
     book.author = book.volumeInfo.authors.toString();
+    book.image_url = book.volumeInfo.imageLinks.thumbnail;
 
     axios.post('http://localhost:3001/api/v1/books/', book)
       .then((responseData) => {
