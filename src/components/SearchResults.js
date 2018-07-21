@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableHighlight,
   Image, ListView, BackHandler, Alert
   } from 'react-native';
 import BookDetail from './BookDetail';
-import MyBookcase from './MyBookcase';
+import Bookcase from './Bookcase';
 import axios from 'axios';
 import {
   MenuProvider,

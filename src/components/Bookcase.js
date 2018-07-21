@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import  { Text, View,  StyleSheet, Button } from 'react-native';
 import axios from 'axios';
-import _ from 'lodash';
 
-export default class MyBookcase extends Component {
+export default class Bookcase extends Component {
 
-  state = {
-    books: [],
-    // status: null
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      books: [],
+      status: null,
+    };
+  }
 
   componentDidMount = () => {
     axios.get(`http://localhost:3001/api/v1/books/`)
@@ -25,18 +28,31 @@ export default class MyBookcase extends Component {
 
   filterBooks = (status) => {
     return _.filter(this.state.books, { status });
+
+    // return this.state.books.filter(book => book.status === status)
   };
 
-  onPressRead() {
-    // setState(status: read)
-    this.books.read();
-  }
+  onPressRead = () => {
+    const books = this.state.books.filter(book => book.status === 'read');
+    const bookList = books.map((book, index) => {
+      return (
+        <Text key={index}> {book.title} </Text>
+      );
+    });
+    return bookList;
+  };
 
-  onPressReading() {
-    // setState(status: reading)
+  onPressReading = () => {
+    const books = this.state.books.filter(book => book.status === 'reading');
+    const bookList = books.map((book, index) => {
+      return (
+        <Text key={index}> {book.title}</Text>
+      );
+    });
+    return bookList;
 
-    this.books.reading();
-  }
+    // this.books.reading();
+  };
 
   onPressToRead() {
     // setState(status: toRead)
@@ -71,7 +87,8 @@ export default class MyBookcase extends Component {
           color="#841584"
           accessibilityLabel="Books to Read"
         />
-
+        {this.onPressRead()}
+        {this.onPressReading()}
       </View>
     );
   }

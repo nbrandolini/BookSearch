@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput,
   TouchableHighlight, ActivityIndicator } from 'react-native';
-
 import SearchResults from './SearchResults';
 
 const styles = StyleSheet.create({
