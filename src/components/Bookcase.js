@@ -9,7 +9,11 @@ export default class Bookcase extends Component {
 
     this.state = {
       books: [],
+      readList: [],
+      readingList: [],
+      toReadList: [],
       status: null,
+      isModalVisible: false,
     };
   }
 
@@ -26,48 +30,55 @@ export default class Bookcase extends Component {
     });
   };
 
-  filterBooks = (status) => {
-    return _.filter(this.state.books, { status });
+  // filterBooks = (status) => {
+  //   return this.state.books.filter(book => book.status === status)
+  // };
 
-    // return this.state.books.filter(book => book.status === status)
-  };
+  callFunc() {
+    if (this.state.isModalVisible) {
+      this.setState({ isModalVisible: false });
+    } else {
+      this.setState({ isModalVisible: true });
+    }
+  }
 
   onPressRead = () => {
     const books = this.state.books.filter(book => book.status === 'read');
     const bookList = books.map((book, index) => {
       return (
-        <Text key={index}> {book.title} </Text>
+        <Text style={styles.title} key={index}> {book.title} </Text>
       );
     });
-    return bookList;
+    this.setState({ readList: bookList });
+    this.callFunc();
   };
 
   onPressReading = () => {
     const books = this.state.books.filter(book => book.status === 'reading');
     const bookList = books.map((book, index) => {
       return (
-        <Text key={index}> {book.title}</Text>
+        <Text style={styles.title} key={index}> {book.title} </Text>
       );
     });
-    return bookList;
-
-    // this.books.reading();
+    this.setState({ readingList: bookList });
+    this.callFunc();
   };
 
-  onPressToRead() {
-    // setState(status: toRead)
+  onPressToRead = () => {
 
-    this.books.toRead();
+    const books = this.state.books.filter(book => book.status === 'to read');
+    const bookList = books.map((book, index) => {
+      return (
+        <Text style={styles.title} key={index}> {book.title} </Text>
+      );
+    });
+    this.setState({ toReadList: bookList });
+    this.callFunc();
   }
 
   render() {
-    // if status != null
-    // then loop through books
-    // by calling this.filterBooks(this.state.status)
-    // and then map that list of books to components
-    // otherwise...
-    // display the three buttons
     return (
+      
       <View style={styles.container}>
         <Button
           onPress={this.onPressRead}
@@ -75,20 +86,24 @@ export default class Bookcase extends Component {
           color="#841584"
           accessibilityLabel="Read Books"
         />
+      {this.state.isModalVisible && this.state.readList}
+
         <Button
           onPress={this.onPressReading}
           title="Reading"
           color="#841584"
           accessibilityLabel="Reading Now"
         />
+        {this.state.isModalVisible && this.state.readingList}
+
         <Button
           onPress={this.onPressToRead}
           title="To Read"
           color="#841584"
           accessibilityLabel="Books to Read"
         />
-        {this.onPressRead()}
-        {this.onPressReading()}
+        {this.state.isModalVisible && this.state.toReadList}
+
       </View>
     );
   }
@@ -97,6 +112,40 @@ export default class Bookcase extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  author: {
+    color: '#656565',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#dddddd',
+  },
+  listView: {
+    backgroundColor: '#F5FCFF',
+  },
+  cellContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    padding: 10,
+  },
+  thumbnail: {
+    width: 53,
+    height: 81,
+    marginRight: 10,
+  },
+  detailContainer: {
+    flex: 1,
+  },
+  actionContainer: {
+
   },
 });

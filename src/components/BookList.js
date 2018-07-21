@@ -10,7 +10,7 @@ import {
  } from 'react-native';
 import BookDetail from './BookDetail';
 
-const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:fiction';
+const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:javascript';
 
 export default class BookList extends Component {
   constructor(props) {
@@ -58,11 +58,11 @@ export default class BookList extends Component {
     return (
       <TouchableHighlight onPress={() => this.showBookDetail(book)} underlayColor='#dddddd'>
           <View>
-            <View style={styles.container}>
+            <View style={styles.cellContainer}>
                 <Image
                   source={{ uri: book.volumeInfo.imageLinks.thumbnail }}
                   style={styles.thumbnail} />
-                <View style={styles.rightContainer}>
+                <View style={styles.detailContainer}>
                     <Text style={styles.title}>{book.volumeInfo.title}</Text>
                     <Text style={styles.author}>{book.volumeInfo.authors}</Text>
                 </View>
@@ -97,6 +97,25 @@ export default class BookList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  author: {
+    color: '#656565',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#dddddd',
+  },
+  listView: {
+    backgroundColor: '#F5FCFF',
+  },
+  cellContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -108,29 +127,10 @@ const styles = StyleSheet.create({
     height: 81,
     marginRight: 10,
   },
-  rightContainer: {
+  detailContainer: {
     flex: 1,
+  },
+  actionContainer: {
 
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 8,
-    fontFamily: 'Avenir Next',
-  },
-  author: {
-    color: '#656565',
-    fontFamily: 'Avenir Next',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#dddddd',
-  },
-  listView: {
-    backgroundColor: '#F5FCFF',
-  },
-  loading: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

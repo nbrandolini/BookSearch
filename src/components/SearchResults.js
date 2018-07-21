@@ -13,47 +13,6 @@ import {
   MenuOption,
 } from 'react-native-popup-menu';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 20,
-    marginBottom: 8,
-  },
-  author: {
-    color: '#656565',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#dddddd',
-  },
-  listView: {
-    backgroundColor: '#F5FCFF',
-  },
-  cellContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    padding: 10,
-  },
-  thumbnail: {
-    width: 53,
-    height: 81,
-    marginRight: 10,
-  },
-  detailContainer: {
-    flex: 1,
-  },
-  actionContainer: {
-
-  },
-});
-
 export default class SearchResults extends Component {
 
   constructor(props) {
@@ -85,7 +44,6 @@ export default class SearchResults extends Component {
   }
 
   addBook = (book, status) => {
-    // const books = this.state.books;
     book.status = status;
     book.title = book.volumeInfo.title;
     book.author = book.volumeInfo.authors.toString();
@@ -156,3 +114,43 @@ export default class SearchResults extends Component {
   }
 
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  author: {
+    color: '#656565',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#dddddd',
+  },
+  listView: {
+    backgroundColor: '#F5FCFF',
+  },
+  cellContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    padding: 10,
+  },
+  thumbnail: {
+    width: 53,
+    height: 81,
+    marginRight: 10,
+  },
+  detailContainer: {
+    flex: 1,
+  },
+  actionContainer: {
+
+  },
+});
