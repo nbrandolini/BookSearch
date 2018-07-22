@@ -51,6 +51,17 @@ export default class BookSearch extends Component {
 
                     <Bookcase/>
           </TabBarIOS.Item>
+          <TabBarIOS.Item
+            selected={this.state.selectedTab === 'bookcase'}
+            systemIcon='more'
+            onPress={() => {
+                      this.setState({
+                        selectedTab: 'bookcase',
+                      });
+                    }}>
+
+                    <Bookcase/>
+          </TabBarIOS.Item>
         </TabBarIOS>
         );
   }

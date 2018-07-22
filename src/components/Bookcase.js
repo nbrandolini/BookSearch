@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import  { Text, View,  StyleSheet, Button } from 'react-native';
+import  { Text, View, TouchableHighlight,  StyleSheet, Button } from 'react-native';
 import axios from 'axios';
 
 export default class Bookcase extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       books: [],
@@ -29,10 +29,6 @@ export default class Bookcase extends Component {
       this.setState({ error: error.message });
     });
   };
-
-  // filterBooks = (status) => {
-  //   return this.state.books.filter(book => book.status === status)
-  // };
 
   callFunc() {
     if (this.state.isModalVisible) {
@@ -74,46 +70,53 @@ export default class Bookcase extends Component {
     });
     this.setState({ toReadList: bookList });
     this.callFunc();
-  }
+  };
 
   render() {
     return (
-      
-      <View style={styles.container}>
-        <Button
-          onPress={this.onPressRead}
-          title="Read"
-          color="#841584"
-          accessibilityLabel="Read Books"
-        />
-      {this.state.isModalVisible && this.state.readList}
+      <View>
+        <TouchableHighlight       style={styles.button}
+          underlayColor="#841584"
+          onPress={this.onPressRead &&
+         this.state.readList}>
 
-        <Button
-          onPress={this.onPressReading}
-          title="Reading"
-          color="#841584"
-          accessibilityLabel="Reading Now"
-        />
-        {this.state.isModalVisible && this.state.readingList}
+          <Text style={styles.buttonText}>Read List</Text>
+        </TouchableHighlight>
 
-        <Button
-          onPress={this.onPressToRead}
-          title="To Read"
-          color="#841584"
-          accessibilityLabel="Books to Read"
-        />
-        {this.state.isModalVisible && this.state.toReadList}
 
+
+        <TouchableHighlight       style={styles.button}
+          underlayColor="#841584"
+          onPress={this.onPressReading &&
+          this.state.isModalVisible && this.state.readList}>
+
+          <Text style={styles.buttonText}>Reading List</Text>
+        </TouchableHighlight>
+
+
+
+        <TouchableHighlight       style={styles.button}
+          underlayColor="#841584"
+          onPress={this.onPressToRead &&
+          this.state.isModalVisible && this.state.readList}>
+
+          <Text style={styles.buttonText}>To Read List</Text>
+        </TouchableHighlight>
       </View>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    color: 'white',
+    alignSelf: 'center',
   },
   title: {
     fontSize: 20,
@@ -147,5 +150,13 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
 
+  },
+  button: {
+    height: 36,
+    backgroundColor: '#0099CC',
+    borderRadius: 8,
+    justifyContent: 'center',
+    marginTop: 15,
+    width: 150,
   },
 });
