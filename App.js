@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './src/components/Search';
 import Featured from './src/components/Featured';
-import Bookcase from './src/components/Bookcase';
+import Bookcase from  './src/components/Bookcase';
 
 import {
   TabBarIOS,
