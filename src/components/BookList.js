@@ -10,7 +10,7 @@ import {
  } from 'react-native';
 import BookDetail from './BookDetail';
 
-const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:javascript';
+const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:art';
 
 export default class BookList extends Component {
   constructor(props) {

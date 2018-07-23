@@ -9,7 +9,7 @@ export default class Featured extends Component {
     return (
       <NavigatorIOS
          initialRoute = {{
-            title: 'Should Read',
+            title: 'Must Read',
             component: BookList,
           }}
           style={{ flex: 1 }}

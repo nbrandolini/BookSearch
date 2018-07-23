@@ -1,57 +1,80 @@
 import React, { Component } from 'react';
 import Search from './src/components/Search';
-import Featured from './src/components/Featured';
-import Bookcase from './src/components/Bookcase';
+import BookList from './src/components/BookList';
+import Bookcase from  './src/components/Bookcase';
+import Read from './src/components/Read';
+import Home from './src/components/Home';
 
-import {
-  TabBarIOS,
-} from 'react-native';
+import { View } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import PropTypes from 'prop-types';
 
-export default class BookSearch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        selectedTab: 'featured',
-      };
-  }
+class TabIcon extends Component {
+
+  static propTypes = {
+    iconName: PropTypes.string.isRequired,
+  };
 
   render() {
     return (
-      <TabBarIOS selectedTab={this.state.selectedTab}>
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'featured'}
-          systemIcon='featured'
-          onPress={() => {
-                      this.setState({
-                        selectedTab: 'featured',
-                      });
-                    }}>
+      <View>
+        <Icon style={{ color: 'blue' }} name= {this.props.iconName} size={25}/>
+      </View>
+    );
+  }
+}
 
-                    <Featured/>
-          </TabBarIOS.Item>
-          <TabBarIOS.Item
-            selected={this.state.selectedTab === 'search'}
-            systemIcon='search'
-            onPress={() => {
-                      this.setState({
-                        selectedTab: 'search',
-                      });
-                    }}>
-
-                    <Search/>
-          </TabBarIOS.Item>
-          <TabBarIOS.Item
-            selected={this.state.selectedTab === 'bookcase'}
-            systemIcon='more'
-            onPress={() => {
-                      this.setState({
-                        selectedTab: 'bookcase',
-                      });
-                    }}>
-
-                    <Bookcase/>
-          </TabBarIOS.Item>
-        </TabBarIOS>
-        );
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Scene key="root">
+          <Scene
+            key="tabbar"
+            tabs={true}
+            tabBarPosition={'bottom'}
+            tabBarStyle={{
+              backgroundColor: '#f0f2ef',
+              paddingTop: 35,
+            }}
+          >
+          <Scene
+            key="home"
+            title="Home"
+            iconName="home"
+            icon={TabIcon}
+            hideNavBar={true}
+            component={Home}
+            initial={true}
+            />
+            <Scene
+              key="search"
+              title="Search Books"
+              iconName="search"
+              icon={TabIcon}
+              hideNavBar={true}
+              component={Search}
+              />
+            <Scene
+              key="list"
+              title="Bookcase"
+              iconName="list"
+              icon={TabIcon}
+              hideNavBar={true}
+              component={Bookcase}
+              />
+            <Scene
+              key="bookList"
+              title="Book List"
+              iconName="book"
+              icon={TabIcon}
+              hideNavBar={true}
+              component={ Read }
+              />
+          </Scene>
+        </Scene>
+      </Router>
+    );
   }
 }
