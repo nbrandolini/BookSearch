@@ -4,7 +4,6 @@ import BookList from './src/components/BookList';
 import Bookcase from  './src/components/Bookcase';
 import Read from './src/components/Read';
 import Home from './src/components/Home';
-
 import { View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
