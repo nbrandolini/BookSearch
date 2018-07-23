@@ -32,8 +32,10 @@ export default class Bookcase extends Component {
   };
 
   filter = (status) => {
+
   //   return _.filter(this.state.books, { status });
   // };
+  
     return this.state.books.filter(book => book.status === status);
   };
 
@@ -59,6 +61,7 @@ export default class Bookcase extends Component {
   onPressReading = () => {
     const readingBooks = this.state.books.filter(book => book.status === 'reading');
     const readingList = readingBooks.map((book, index) => {
+      console.log(readingList);
       return (
         <Text style={styles.container} key={index}>{book.title} </Text>
       );
@@ -109,14 +112,14 @@ export default class Bookcase extends Component {
       </View>
     );
   }
-
-  showReadList(readList) {
-    this.props.navigator.push({
-      list: this.state.readList,
-      component: Read,
-      passProps: { readList },
-    });
-  }
+  //
+  // showReadList(readList) {
+  //   this.props.navigator.push({
+  //     list: this.state.readList,
+  //     component: Read,
+  //     passProps: { readList },
+  //   });
+  // }
 }
 
 const styles = StyleSheet.create({

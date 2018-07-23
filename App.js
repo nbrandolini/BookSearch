@@ -3,7 +3,7 @@ import Search from './src/components/Search';
 import BookList from './src/components/BookList';
 import Bookcase from  './src/components/Bookcase';
 import Read from './src/components/Read';
-import SearchResults from './src/components/SearchBooks';
+import Home from './src/components/Home';
 
 import { View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
@@ -18,8 +18,8 @@ class TabIcon extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center', justifyContent: 'center' }}>
-        <Icon style={{ color: 'blue' }} name= {this.props.iconName || 'circle'} size={25}/>
+      <View>
+        <Icon style={{ color: 'blue' }} name= {this.props.iconName} size={25}/>
       </View>
     );
   }
@@ -40,12 +40,12 @@ export default class App extends Component {
             }}
           >
           <Scene
-            key="must read"
-            title="Must Read"
-            iconName="book"
+            key="home"
+            title="Home"
+            iconName="home"
             icon={TabIcon}
             hideNavBar={true}
-            component={BookList}
+            component={Home}
             initial={true}
             />
             <Scene

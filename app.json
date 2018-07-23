@@ -5,6 +5,10 @@
    "version": "1.0.0",
    "slug": "book-search",
    "sdkVersion": "27.0.0",
+   "splash": {
+      "image": "./assets/photo-background@3x.png",
+      "backgroundColor": "#F5FCFF",
+    },
    "ios": {
      "bundleIdentifier": "com.nicoleta.booksearch"
    },

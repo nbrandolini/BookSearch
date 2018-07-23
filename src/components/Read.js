@@ -13,8 +13,8 @@ export default class Read extends Component {
               component: Bookcase,
             }}/>
       );
-    }
   }
+}
 
 const styles = StyleSheet.create({
     container: {
