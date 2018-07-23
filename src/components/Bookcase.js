@@ -31,6 +31,12 @@ export default class Bookcase extends Component {
     });
   };
 
+  filter = (status) => {
+  //   return _.filter(this.state.books, { status });
+  // };
+    return this.state.books.filter(book => book.status === status);
+  };
+
   callFunc() {
     if (this.state.isModalVisible) {
       this.setState({ isModalVisible: false });
@@ -41,35 +47,34 @@ export default class Bookcase extends Component {
 
   onPressRead = () => {
     const readBooks = this.state.books.filter(book => book.status === 'read');
-    const readBookList = readBooks.map((book, index) => {
+    const readList = readBooks.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={index}> {book.title} </Text>
       );
     });
-    this.setState({ readList: readBookList });
+    this.setState({ readList: readList });
     this.callFunc();
   };
 
   onPressReading = () => {
     const readingBooks = this.state.books.filter(book => book.status === 'reading');
-    const readingBookList = readingBooks.map((book, index) => {
+    const readingList = readingBooks.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={index}>{book.title} </Text>
       );
     });
-    this.setState({ readingList: readingBookList });
+    this.setState({ readingList: readingList });
     this.callFunc();
   };
 
   onPressToRead = () => {
-
     const toReadBooks = this.state.books.filter(book => book.status === 'to read');
-    const toReadBookList = toReadBooks.map((book, index) => {
+    const toReadList = toReadBooks.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title}  </Text>
+        <Text style={styles.container} key={index}> {book.title}  </Text>
       );
     });
-    this.setState({ toReadList: toReadBookList });
+    this.setState({ toReadList: toReadList });
     this.callFunc();
   };
 
@@ -105,20 +110,18 @@ export default class Bookcase extends Component {
     );
   }
 
-  showReadList(readBookList) {
+  showReadList(readList) {
     this.props.navigator.push({
       list: this.state.readList,
       component: Read,
-      passProps: { readBookList },
+      passProps: { readList },
     });
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 15,
   },
   title: {
     fontSize: 20,

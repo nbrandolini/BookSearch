@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './src/components/Search';
 import Featured from './src/components/Featured';
 import Bookcase from  './src/components/Bookcase';
+import Read from './src/components/Read';
 
 import {
   TabBarIOS,
@@ -50,6 +51,17 @@ export default class BookSearch extends Component {
                     }}>
 
                     <Bookcase/>
+          </TabBarIOS.Item>
+          <TabBarIOS.Item
+            selected={this.state.selectedTab === 'read'}
+            systemIcon='top-rated'
+            onPress={() => {
+                      this.setState({
+                        selectedTab: 'read',
+                      });
+                    }}>
+
+                    <Read/>
           </TabBarIOS.Item>
         </TabBarIOS>
         );
