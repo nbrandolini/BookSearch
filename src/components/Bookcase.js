@@ -30,9 +30,11 @@ export default class Bookcase extends Component {
     });
   };
 
-  // filterBooks = (status) => {
-  //   return this.state.books.filter(book => book.status === status)
-  // };
+  filter = (status) => {
+    //   return _.filter(this.state.books, { status });
+
+    return this.state.books.filter(book => book.status === status);
+  };
 
   callFunc() {
     if (this.state.isModalVisible) {
@@ -46,7 +48,7 @@ export default class Bookcase extends Component {
     const books = this.state.books.filter(book => book.status === 'read');
     const bookList = books.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={index}> {book.title} </Text>
       );
     });
     this.setState({ readList: bookList });
@@ -57,7 +59,7 @@ export default class Bookcase extends Component {
     const books = this.state.books.filter(book => book.status === 'reading');
     const bookList = books.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={index}> {book.title} </Text>
       );
     });
     this.setState({ readingList: bookList });
@@ -69,7 +71,7 @@ export default class Bookcase extends Component {
     const books = this.state.books.filter(book => book.status === 'to read');
     const bookList = books.map((book, index) => {
       return (
-        <Text style={styles.title} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={index}> {book.title} </Text>
       );
     });
     this.setState({ toReadList: bookList });
@@ -78,7 +80,7 @@ export default class Bookcase extends Component {
 
   render() {
     return (
-      
+
       <View style={styles.container}>
         <Button
           onPress={this.onPressRead}
@@ -111,9 +113,7 @@ export default class Bookcase extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 25,
   },
   title: {
     fontSize: 20,
