@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import  { Text, View,  StyleSheet, Button } from 'react-native';
+import  { Text, View,  StyleSheet, Button, ScrollView } from 'react-native';
 import axios from 'axios';
-import Read from './Read';
 import _ from 'lodash';
 
 export default class Bookcase extends Component {
@@ -38,16 +37,16 @@ export default class Bookcase extends Component {
     return this.state.books.filter(book => book.status === status);
   };
 
-
   toggleList(list) {
     this.setState({ [list]: !this.state[list] });
   }
 
   readList = () => {
     const readBooks = this.state.books.filter(book => book.status === 'read');
-    const readList = readBooks.map((book, index) => {
+    const readList = readBooks.map((book, key) => {
       return (
         <Text style={styles.container} key={book.id}> {book.title} </Text>
+
       );
     });
     return readList;
@@ -76,7 +75,6 @@ export default class Bookcase extends Component {
 
   render() {
     return (
-
       <View style={styles.container}>
         <Button
           onPress={() => this.toggleList('showRead')}
@@ -84,7 +82,9 @@ export default class Bookcase extends Component {
           color="#841584"
           accessibilityLabel="Read Books"
         />
+      <ScrollView>
       {this.state.showRead && this.readList()}
+      </ScrollView>
 
         <Button
           onPress={() => this.toggleList('showReading')}
@@ -92,7 +92,9 @@ export default class Bookcase extends Component {
           color="#841584"
           accessibilityLabel="Reading Now"
         />
+        <ScrollView>
         {this.state.showReading && this.readingList()}
+        </ScrollView>
 
         <Button
           onPress={() => this.toggleList('showToRead')}
@@ -100,8 +102,9 @@ export default class Bookcase extends Component {
           color="#841584"
           accessibilityLabel="Books to Read"
         />
+        <ScrollView>
         {this.state.showToRead && this.toReadList()}
-
+        </ScrollView>
       </View>
     );
   }
