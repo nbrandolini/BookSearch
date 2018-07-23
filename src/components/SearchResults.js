@@ -55,8 +55,8 @@ export default class SearchResults extends Component {
         responseData.push(book);
         this.setState({
           responseData,
-          title: 'My Bookcase',
-          component: MyBookcase,
+          title: 'Bookcase',
+          component: Bookcase,
           passProps: { books: responseData.items },
         });
       })
