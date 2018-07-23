@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import  { Text, View,  StyleSheet, Button } from 'react-native';
 import axios from 'axios';
 import Read from './Read';
+import _ from 'lodash';
 
 export default class Bookcase extends Component {
 
@@ -10,9 +11,9 @@ export default class Bookcase extends Component {
 
     this.state = {
       books: [],
-      readList: [],
-      readingList: [],
-      toReadList: [],
+      showRead: false,
+      showReading: false,
+      showToRead: false,
       status: null,
       isModalVisible: false,
     };
@@ -31,54 +32,47 @@ export default class Bookcase extends Component {
     });
   };
 
-  filter = (status) => {
+  filterBooks = (status) => {
 
   //   return _.filter(this.state.books, { status });
   // };
-  
+
     return this.state.books.filter(book => book.status === status);
   };
 
-  callFunc() {
-    if (this.state.isModalVisible) {
-      this.setState({ isModalVisible: false });
-    } else {
-      this.setState({ isModalVisible: true });
-    }
+  toggleList(list) {
+    this.setState({ [list]: !this.state[list] });
   }
 
-  onPressRead = () => {
+  readList = () => {
     const readBooks = this.state.books.filter(book => book.status === 'read');
     const readList = readBooks.map((book, index) => {
       return (
-        <Text style={styles.container} key={index}> {book.title} </Text>
+        <Text style={styles.container} key={book.id}> {book.title} </Text>
       );
     });
-    this.setState({ readList: readList });
-    this.callFunc();
+    return readList;
   };
 
-  onPressReading = () => {
+  readingList = () => {
     const readingBooks = this.state.books.filter(book => book.status === 'reading');
     const readingList = readingBooks.map((book, index) => {
-      console.log(readingList);
       return (
-        <Text style={styles.container} key={index}>{book.title} </Text>
+        <Text style={styles.container} key={book.id}>{book.title} </Text>
       );
     });
-    this.setState({ readingList: readingList });
-    this.callFunc();
+    console.log(readingList);
+    return readingList;
   };
 
-  onPressToRead = () => {
+  toReadList = () => {
     const toReadBooks = this.state.books.filter(book => book.status === 'to read');
     const toReadList = toReadBooks.map((book, index) => {
       return (
-        <Text style={styles.container} key={index}> {book.title}  </Text>
+        <Text style={styles.container} key={book.id}> {book.title}  </Text>
       );
     });
-    this.setState({ toReadList: toReadList });
-    this.callFunc();
+    return toReadList;
   };
 
   render() {
@@ -86,40 +80,32 @@ export default class Bookcase extends Component {
 
       <View style={styles.container}>
         <Button
-          onPress={this.onPressRead}
+          onPress={() => this.toggleList('showRead')}
           title="Read"
           color="#841584"
           accessibilityLabel="Read Books"
         />
-      {this.state.isModalVisible && this.state.readList}
+      {this.state.showRead && this.readList()}
 
         <Button
-          onPress={this.onPressReading}
+          onPress={() => this.toggleList('showReading')}
           title="Reading"
           color="#841584"
           accessibilityLabel="Reading Now"
         />
-        {this.state.isModalVisible && this.state.readingList}
+        {this.state.showReading && this.readingList()}
 
         <Button
-          onPress={this.onPressToRead}
+          onPress={() => this.toggleList('showToRead')}
           title="To Read"
           color="#841584"
           accessibilityLabel="Books to Read"
         />
-        {this.state.isModalVisible && this.state.toReadList}
+        {this.state.showToRead && this.toReadList()}
 
       </View>
     );
   }
-  //
-  // showReadList(readList) {
-  //   this.props.navigator.push({
-  //     list: this.state.readList,
-  //     component: Read,
-  //     passProps: { readList },
-  //   });
-  // }
 }
 
 const styles = StyleSheet.create({
