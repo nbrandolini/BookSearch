@@ -49,7 +49,7 @@ export default class SearchResults extends Component {
     book.author = book.volumeInfo.authors.toString();
     book.image_url = book.volumeInfo.imageLinks.thumbnail;
 
-    axios.post('http://localhost:3001/api/v1/books/', book)
+    axios.post('http://bookjournal-api.herokuapp.com/api/v1/books/', book)
       .then((responseData) => {
         Alert.alert(`Successfully Added ${book.volumeInfo.title}`);
         responseData.push(book);

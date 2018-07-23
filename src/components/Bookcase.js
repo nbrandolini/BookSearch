@@ -19,7 +19,7 @@ export default class Bookcase extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(`http://localhost:3001/api/v1/books/`)
+    axios.get(`http://bookjournal-api.herokuapp.com/api/v1/books/`)
     .then((response) => {
       console.log(response.data);
       this.setState({
@@ -112,7 +112,7 @@ export default class Bookcase extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
+    marginTop: 25,
   },
   title: {
     fontSize: 20,

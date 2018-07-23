@@ -5,13 +5,13 @@ import SearchResults from './SearchResults';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 65,
+    marginTop: 100,
     padding: 10,
   },
   searchInput: {
     height: 40,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
     fontSize: 18,
     color: 'black',
     borderRadius: 4,
