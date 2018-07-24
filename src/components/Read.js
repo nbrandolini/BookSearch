@@ -9,7 +9,7 @@ export default class Read extends Component {
       <NavigatorIOS
           style={styles.container}
           initialRoute={{
-              title: 'Lists',
+              title: 'My Bookcase',
               component: Bookcase,
             }}/>
       );

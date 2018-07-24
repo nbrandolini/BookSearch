@@ -6,7 +6,7 @@
    "slug": "book-search",
    "sdkVersion": "27.0.0",
    "splash": {
-      "image": "./assets/photo-background@3x.png",
+      "image": "./assets/book.png",
       "backgroundColor": "#F5FCFF",
     },
    "ios": {
