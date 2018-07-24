@@ -67,7 +67,6 @@ export default class SearchResults extends Component {
       });
   };
 
-
   renderBook(book) {
     let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
 

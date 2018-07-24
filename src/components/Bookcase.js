@@ -45,7 +45,7 @@ export default class Bookcase extends Component {
     const readBooks = this.state.books.filter(book => book.status === 'read');
     const readList = readBooks.map((book, key) => {
       return (
-        <Text style={styles.container} key={book.id}> {book.title} </Text>
+        <Text style={styles.listView} key={book.id}> {book.title} </Text>
 
       );
     });
@@ -56,7 +56,7 @@ export default class Bookcase extends Component {
     const readingBooks = this.state.books.filter(book => book.status === 'reading');
     const readingList = readingBooks.map((book, index) => {
       return (
-        <Text style={styles.container} key={book.id}>{book.title} </Text>
+        <Text style={styles.listView} key={book.id}>{book.title} </Text>
       );
     });
     console.log(readingList);
@@ -67,7 +67,7 @@ export default class Bookcase extends Component {
     const toReadBooks = this.state.books.filter(book => book.status === 'to read');
     const toReadList = toReadBooks.map((book, index) => {
       return (
-        <Text style={styles.container} key={book.id}> {book.title}  </Text>
+        <Text style={styles.listView} key={book.id}> {book.title}  </Text>
       );
     });
     return toReadList;
@@ -75,7 +75,7 @@ export default class Bookcase extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.cellContainer}>
         <Button
           onPress={() => this.toggleList('showRead')}
           title="Read"
@@ -126,15 +126,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#dddddd',
   },
   listView: {
+    marginTop: 5,
     backgroundColor: '#F5FCFF',
   },
   cellContainer: {
+    marginTop: 80,
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    padding: 10,
+    padding: 5,
   },
   thumbnail: {
     width: 53,

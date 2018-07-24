@@ -6,11 +6,11 @@ import {
   Image,
   ListView,
   TouchableHighlight,
-  ActivityIndicator,
+  ActivityIndicator
  } from 'react-native';
 import BookDetail from './BookDetail';
 
-const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:art';
+const REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:fiction';
 
 export default class BookList extends Component {
   constructor(props) {
@@ -56,9 +56,9 @@ export default class BookList extends Component {
 
   renderBook(book) {
     return (
-      <TouchableHighlight onPress={() => this.showBookDetail(book)} underlayColor='#dddddd'>
-          <View>
-            <View style={styles.cellContainer}>
+        <TouchableHighlight onPress={() => this.showBookDetail(book)} underlayColor='#dddddd'>
+            <View>
+             <View style={styles.cellContainer}>
                 <Image
                   source={{ uri: book.volumeInfo.imageLinks.thumbnail }}
                   style={styles.thumbnail} />
@@ -66,10 +66,12 @@ export default class BookList extends Component {
                     <Text style={styles.title}>{book.volumeInfo.title}</Text>
                     <Text style={styles.author}>{book.volumeInfo.authors}</Text>
                 </View>
-            </View>
+             </View>
+
             <View style={ styles.separator } />
-          </View>
+           </View>
         </TouchableHighlight>
+
         );
   }
 

@@ -4,6 +4,7 @@ import BookList from './src/components/BookList';
 import Bookcase from  './src/components/Bookcase';
 import Read from './src/components/Read';
 import Home from './src/components/Home';
+import Featured from './src/components/Featured';
 import { View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -61,7 +62,7 @@ export default class App extends Component {
               iconName="list"
               icon={TabIcon}
               hideNavBar={true}
-              component={Bookcase}
+              component={Read}
               />
             <Scene
               key="bookList"
@@ -69,7 +70,7 @@ export default class App extends Component {
               iconName="book"
               icon={TabIcon}
               hideNavBar={true}
-              component={ Read }
+              component={Bookcase}
               />
           </Scene>
         </Scene>
