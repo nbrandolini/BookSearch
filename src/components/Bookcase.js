@@ -18,6 +18,17 @@ export default class Bookcase extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.books !== undefined && props.books !== null) {
+      return {
+        ...state,
+        books: props.books,
+      };
+    }
+
+    return null;
+  }
+
   componentDidMount = () => {
     axios.get(`http://bookjournal-api.herokuapp.com/api/v1/books/`)
     .then((response) => {

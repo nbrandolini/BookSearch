@@ -53,10 +53,9 @@ export default class SearchResults extends Component {
       .then((responseData) => {
         Alert.alert(`Successfully Added ${book.volumeInfo.title}`);
         responseData.push(book);
-        this.setState({
-          responseData,
+        this.props.navigator.push({
           title: 'Bookcase',
-          component: Bookcase,
+          component: Read,
           passProps: { books: responseData.items },
         });
       })
@@ -102,6 +101,7 @@ export default class SearchResults extends Component {
       </TouchableHighlight>
     </MenuProvider>
       );
+
   }
 
   showBookDetail(book) {
