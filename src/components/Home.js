@@ -12,7 +12,7 @@ export default class Home extends Component {
           <Text style={{
               textAlign: 'center',
               fontSize: 40,
-              marginTop: 150,
+              marginTop: 170,
             }}>{text}
           </Text>
       </ImageBackground>

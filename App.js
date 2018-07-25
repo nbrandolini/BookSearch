@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Search from './src/components/Search';
-import BookList from './src/components/BookList';
-import Bookcase from  './src/components/Bookcase';
+import BookShops from  './src/components/BookShops';
 import Read from './src/components/Read';
 import Home from './src/components/Home';
-import Featured from './src/components/Featured';
 import { View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -41,36 +39,40 @@ export default class App extends Component {
           >
           <Scene
             key="home"
-            title="Home"
+            title="home"
             iconName="home"
             icon={TabIcon}
             hideNavBar={true}
             component={Home}
             initial={true}
+            swipeEnabled={true}
             />
             <Scene
               key="search"
-              title="Search Books"
+              title="search"
               iconName="search"
               icon={TabIcon}
               hideNavBar={true}
               component={Search}
+              swipeEnabled={true}
               />
             <Scene
               key="list"
-              title="Bookcase"
+              title="bookcase"
               iconName="list"
               icon={TabIcon}
               hideNavBar={true}
               component={Read}
+              swipeEnabled={true}
               />
             <Scene
-              key="bookList"
-              title="Book List"
-              iconName="book"
+              key="info"
+              title="info"
+              iconName="info"
               icon={TabIcon}
               hideNavBar={true}
-              component={Bookcase}
+              component={BookShops}
+              swipeEnabled={true}
               />
           </Scene>
         </Scene>

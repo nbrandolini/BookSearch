@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableHighlight,
   Image, ListView, BackHandler, Alert
   } from 'react-native';
 import BookDetail from './BookDetail';
-import Bookcase from './Bookcase';
+import Read from './Read';
 import axios from 'axios';
 import {
   MenuProvider,
@@ -67,7 +67,7 @@ export default class SearchResults extends Component {
   };
 
   renderBook(book) {
-    let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : '';
+    let imageURI = (typeof book.volumeInfo.imageLinks !== 'undefined') ? book.volumeInfo.imageLinks.thumbnail : null;
 
     return (
     <MenuProvider>

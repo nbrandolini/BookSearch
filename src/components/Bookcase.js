@@ -54,7 +54,7 @@ export default class Bookcase extends Component {
 
   readList = () => {
     const readBooks = this.state.books.filter(book => book.status === 'read');
-    const readList = readBooks.map((book, key) => {
+    const readList = readBooks.map((book, index) => {
       return (
         <Text style={styles.listView} key={book.id}> {book.title} </Text>
 
@@ -70,7 +70,6 @@ export default class Bookcase extends Component {
         <Text style={styles.listView} key={book.id}>{book.title} </Text>
       );
     });
-    console.log(readingList);
     return readingList;
   };
 
@@ -93,9 +92,9 @@ export default class Bookcase extends Component {
           color="#841584"
           accessibilityLabel="Read Books"
         />
-      <ScrollView>
-      {this.state.showRead && this.readList()}
-      </ScrollView>
+        <ScrollView>
+        {this.state.showRead && this.readList()}
+        </ScrollView>
 
         <Button
           onPress={() => this.toggleList('showReading')}
@@ -123,7 +122,7 @@ export default class Bookcase extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
+    marginTop: 10,
   },
   title: {
     fontSize: 20,
@@ -137,7 +136,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#dddddd',
   },
   listView: {
-    marginTop: 5,
     backgroundColor: '#F5FCFF',
   },
   cellContainer: {
