@@ -1,3 +1,17 @@
+This is the repository for BookSearch, a book tracking IOS app for ADA capstone project. The project was built using React Native as frontend, Rails as backend and Google Books Api. The app will allow the user to search for a book by title or author using the Google Books Api, look at the description of the book and add the book to one of the lists available: read, reading, or to read. 
+
+
+### To run the app you will need:
+
+* [Node.js](https://nodejs.org/en/) and [NPM.js](https://www.npmjs.com/get-npm) are required to start the package.
+* [XCode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) is required to run iOS Simulator.
+
+1. In terminal clone repo from Github to your local machine
+2. In the project folder run: npm install
+3. Then run: npm start
+4. To run the app on iOS simulator, press "i". 
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
